@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Alcashier - Aplikasi POS Modern</title>
+    <meta name="description" content="Aplikasi Kasir (POS) modern untuk UMKM. Satu kali bayar, tanpa biaya langganan bulanan.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    accent1: '#00E5FF',
+                    accent2: '#8B5CF6',
+                    accent3: '#3B82F6',
+                    accent4: '#A855F7',
+                    accent5: '#EC4899',
+                    accent6: '#F97316',
+                },
+                fontFamily: {
+                    sans: ['Inter', 'sans-serif'],
+                    mono: ['Fira Code', 'monospace'],
+                    space: ['Space Grotesk', 'sans-serif'],
+                    jakarta: ['Plus Jakarta Sans', 'sans-serif']
+                }
+            }
+        }
+    }
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;800;900&family=Space+Grotesk:wght@400;700;800;900&family=Plus+Jakarta+Sans:wght@400;600;800;900&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="antialiased selection:bg-accent1/30 selection:text-white">
+
+    <div class="cosmic-layer">
+        <div class="nebula-glow"></div>
+        <div class="aurora-bg-1"></div>
+        <div class="aurora-bg-2"></div>
+        <div class="noise-overlay"></div>
+        <div class="vignette-overlay"></div>
+    </div>
+    
+    <div class="doodle doodle-1"></div>
+    <div class="doodle doodle-2"></div>
+    <div class="doodle doodle-3"></div>
+
+    <div class="fixed top-5 left-5 z-[100] md:hidden">
+        <a href="http://albetpf.github.io/" class="glass px-3.5 py-2 rounded-full flex items-center gap-1.5 font-mono font-bold hover:text-accent1 transition-all duration-300 shadow-xl bg-[var(--bg-main)]/70 backdrop-blur-md border-[var(--glass-border)] group">
+            <i class="ph-bold ph-arrow-left text-sm group-hover:-translate-x-1 transition-transform"></i>
+            <span class="uppercase tracking-widest text-[9px] sm:text-[10px]">Kembali ke Portofolio</span>
+        </a>
+    </div>
+
+    <header id="desktop-nav" class="premium-navbar fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-max max-w-[95%] rounded-full hidden md:block py-3 px-6 lg:px-8">
+        <nav class="relative flex items-center gap-5 lg:gap-8">
+            <div id="nav-indicator" class="absolute bottom-[-12px] lg:bottom-[-16px] left-0 h-[3px] rounded-t-full bg-gradient-to-r from-accent1 to-accent2 transition-all duration-500 opacity-0 pointer-events-none"></div>
+            
+            <a href="http://albetpf.github.io/" class="flex items-center gap-2 text-[10px] lg:text-xs font-mono tracking-widest text-[var(--bg-main)] bg-accent1 px-4 py-1.5 rounded-full uppercase font-bold hover:scale-105 transition-transform shadow-[0_0_15px_rgba(0,229,255,0.4)] mr-2 group">
+                <i class="ph-bold ph-arrow-left text-sm group-hover:-translate-x-1 transition-transform"></i> Portofolio
+            </a>
+
+            <!-- Menu Navigasi -->
+            <a href="#hero" class="nav-item nav-trigger text-[10px] lg:text-xs font-mono tracking-widest text-[var(--text-main)] uppercase font-bold active-menu" data-target="hero">Beranda</a>
+            <a href="#galeri" class="nav-item nav-trigger text-[10px] lg:text-xs font-mono tracking-widest text-[var(--text-main)] uppercase font-bold" data-target="galeri">Galeri</a>
+            <a href="#fitur" class="nav-item nav-trigger text-[10px] lg:text-xs font-mono tracking-widest text-[var(--text-main)] uppercase font-bold" data-target="fitur">Fitur</a>
+            <a href="#harga" class="nav-item nav-trigger text-[10px] lg:text-xs font-mono tracking-widest text-[var(--text-main)] uppercase font-bold" data-target="harga">Harga</a>
+        </nav>
+    </header>
+
+    <main id="scroller" class="h-[100dvh] w-full overflow-y-auto snap-y snap-mandatory relative z-10 scroll-smooth">
+
+       <!-- FRAME 1: Teks Utama -->
+        <section id="hero" class="slide">
+            <div class="slide-content w-full max-w-4xl lg:max-w-5xl mx-auto">
+                <div class="my-auto w-full flex flex-col items-center text-center">
+                    <h1 class="text-[var(--text-main)] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-4 md:mb-6 tracking-tighter font-space fade-in">
+                        Aplikasi Kasir Pintar, <br>
+                        <span class="text-gradient drop-shadow-[0_0_15px_rgba(0,229,255,0.2)]">Satu Kali Bayar.</span>
+                    </h1>
+                    <p class="text-muted text-sm md:text-base lg:text-lg max-w-2xl mb-8 md:mb-10 leading-relaxed font-sans fade-in">
+                        Tingkatkan profesionalitas bisnis Anda dengan <b>Alcashier</b>. Beroperasi 100% offline tanpa perlu pusing memikirkan biaya langganan bulanan dan maintenance yang ribet.
+                    </p>
+                    <div class="fade-in mt-2">
+                        <a href="https://wa.me/6285173381900?text=Halo%20Mas%20Albert,%20saya%20tertarik%20membeli%20Aplikasi%20Alcashier.%20Bisa%20minta%20info%20lebih%20lanjut?" class="btn-primary-custom px-8 py-4 font-space uppercase tracking-widest text-xs md:text-sm" target="_blank">
+                            Dapatkan Sekarang <i class="ph-bold ph-arrow-right text-base"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FRAME 2: Galeri -->
+        <section id="galeri" class="slide">
+            <div class="slide-content w-full max-w-[90%] md:max-w-3xl mx-auto">
+                <div class="my-auto w-full flex flex-col items-center">
+                    <h2 class="text-2xl md:text-4xl font-black mb-2 text-center tracking-tighter font-space fade-in"><span class="text-gradient">Tampilan</span> Aplikasi</h2>
+                    <p class="text-muted text-xs md:text-sm text-center mb-6 font-sans fade-in">Desain UI/UX Elegan & User Friendly.</p>
+                    
+                    <div class="grid grid-cols-2 gap-3 md:gap-5 w-full fade-in">
+                        <!-- Galeri Card 1 -->
+                        <div class="new-gallery-card group" onclick="openLightbox('images/mockup-1.png')" style="--hover-color: #00E5FF;">
+                            <img src="images/mockup-1.png" alt="Mockup 1" onerror="this.src='https://via.placeholder.com/400x300/1E293B/00E5FF?text=Tampilan+Awal'">
+                            <div class="card-overlay"></div>
+                            <div class="card-badge">
+                                <i class="ph-fill ph-monitor"></i> Tampilan Awal
+                            </div>
+                            <div class="card-zoom-icon"><i class="ph-bold ph-arrows-out-simple"></i></div>
+                        </div>
+                        
+                        <!-- Galeri Card 2 -->
+                        <div class="new-gallery-card group" onclick="openLightbox('images/mockup-2.png')" style="--hover-color: #8B5CF6;">
+                            <img src="images/mockup-2.png" alt="Mockup 2" onerror="this.src='https://via.placeholder.com/400x300/1E293B/8B5CF6?text=Order+Menu'">
+                            <div class="card-overlay"></div>
+                            <div class="card-badge">
+                                <i class="ph-fill ph-coffee"></i> Order Menu
+                            </div>
+                            <div class="card-zoom-icon"><i class="ph-bold ph-arrows-out-simple"></i></div>
+                        </div>
+
+                        <!-- Galeri Card 3 -->
+                        <div class="new-gallery-card group" onclick="openLightbox('images/mockup-3.png')" style="--hover-color: #EC4899;">
+                            <img src="images/mockup-3.png" alt="Mockup 3" onerror="this.src='https://via.placeholder.com/400x300/1E293B/EC4899?text=Detail+Pesanan'">
+                            <div class="card-overlay"></div>
+                            <div class="card-badge">
+                                <i class="ph-fill ph-receipt"></i> Detail Pesanan
+                            </div>
+                            <div class="card-zoom-icon"><i class="ph-bold ph-arrows-out-simple"></i></div>
+                        </div>
+
+                        <!-- Galeri Card 4 -->
+                        <div class="new-gallery-card group" onclick="openLightbox('images/mockup-4.png')" style="--hover-color: #F97316;">
+                            <img src="images/mockup-4.png" alt="Mockup 4" onerror="this.src='https://via.placeholder.com/400x300/1E293B/F97316?text=Pembayaran'">
+                            <div class="card-overlay"></div>
+                            <div class="card-badge">
+                                <i class="ph-fill ph-wallet"></i> Pembayaran
+                            </div>
+                            <div class="card-zoom-icon"><i class="ph-bold ph-arrows-out-simple"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="fitur" class="slide">
+            <div class="slide-content w-full max-w-[90%] md:max-w-2xl mx-auto">
+                <div class="my-auto w-full flex flex-col items-center">
+                    <h2 class="text-2xl md:text-4xl font-black mb-2 text-center tracking-tighter font-space fade-in"><span class="text-gradient">Dirancang</span> Untuk Kemudahan</h2>
+                    <p class="text-muted text-xs md:text-sm text-center mb-6 font-sans fade-in">Fitur sekelas mesin POS jutaan rupiah dalam genggaman Anda.</p>
+                    
+                    <div class="grid grid-cols-2 gap-3 md:gap-5 w-full fade-in">
+                        <div class="glass rounded-2xl p-4 md:p-6 text-center glass-hover bento-item bg-[var(--bg-main)]/20 shadow-xl border-[var(--glass-border)] flex flex-col justify-center items-center">
+                            <i class="ph-duotone ph-printer text-3xl md:text-4xl text-accent1 mb-3 drop-shadow-[0_0_15px_rgba(0,229,255,0.4)]"></i>
+                            <h3 class="text-[var(--text-main)] text-xs md:text-sm font-bold mb-1.5 font-space">Cetak Struk</h3>
+                            <p class="text-muted text-[9px] md:text-xs">Koneksi printer bluetooth instan, dengan cetak logo toko otomatis.</p>
+                        </div>
+                        <div class="glass rounded-2xl p-4 md:p-6 text-center glass-hover bento-item bg-[var(--bg-main)]/20 shadow-xl border-[var(--glass-border)] flex flex-col justify-center items-center">
+                            <i class="ph-duotone ph-chart-line-up text-3xl md:text-4xl text-accent2 mb-3 drop-shadow-[0_0_15px_rgba(139,92,246,0.4)]"></i>
+                            <h3 class="text-[var(--text-main)] text-xs md:text-sm font-bold mb-1.5 font-space">Laporan Cerdas</h3>
+                            <p class="text-muted text-[9px] md:text-xs">Pantau omset harian via grafik & export langsung ke file Excel.</p>
+                        </div>
+                        <div class="glass rounded-2xl p-4 md:p-6 text-center glass-hover bento-item bg-[var(--bg-main)]/20 shadow-xl border-[var(--glass-border)] flex flex-col justify-center items-center">
+                            <i class="ph-duotone ph-clock-countdown text-3xl md:text-4xl text-accent3 mb-3 drop-shadow-[0_0_15px_rgba(59,130,246,0.4)]"></i>
+                            <h3 class="text-[var(--text-main)] text-xs md:text-sm font-bold mb-1.5 font-space">Open Bills</h3>
+                            <p class="text-muted text-[9px] md:text-xs">Tahan pesanan pelanggan agar tidak mengganggu antrean.</p>
+                        </div>
+                        <div class="glass rounded-2xl p-4 md:p-6 text-center glass-hover bento-item bg-[var(--bg-main)]/20 shadow-xl border-[var(--glass-border)] flex flex-col justify-center items-center">
+                            <i class="ph-duotone ph-wallet text-3xl md:text-4xl text-accent4 mb-3 drop-shadow-[0_0_15px_rgba(168,85,247,0.4)]"></i>
+                            <h3 class="text-[var(--text-main)] text-xs md:text-sm font-bold mb-1.5 font-space">Sistem Shift</h3>
+                            <p class="text-muted text-[9px] md:text-xs">Kas kecil (Petty Cash) & sistem deteksi selisih uang otomatis.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="harga" class="slide">
+            <div class="slide-content w-full max-w-[90%] md:max-w-2xl mx-auto">
+                <div class="my-auto w-full flex flex-col items-center">
+                    
+                    <div class="pricing-card-heboh rounded-[2rem] p-6 md:p-8 w-full max-w-md relative overflow-hidden text-center shrink-0 fade-in mb-6">
+                        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,229,255,0.15)_0%,transparent_70%)] pointer-events-none"></div>
+                        <div class="relative z-10">
+                            <div class="inline-block px-3 py-1 mb-4 rounded-full border border-accent2/40 bg-accent2/10 text-accent2 text-[10px] font-bold font-mono tracking-widest uppercase shadow-[0_0_10px_rgba(139,92,246,0.3)]">Paket Lifetime</div>
+                            <h2 class="text-[var(--text-main)] text-xl md:text-3xl font-black mb-2 tracking-tighter font-space">Investasi Sekali,<br>Pakai Selamanya.</h2>
+                            
+                            <div class="flex items-start justify-center my-5 md:my-7">
+                                <span class="text-lg md:text-2xl text-accent1 mt-2 mr-1.5 font-bold font-mono drop-shadow-[0_0_8px_rgba(0,229,255,0.6)]">Rp</span>
+                                <span class="text-5xl md:text-7xl font-black font-jakarta tracking-tighter price-gradient drop-shadow-lg">1.799</span>
+                                <span class="text-lg md:text-2xl text-accent5 mt-auto mb-1.5 font-bold font-mono drop-shadow-[0_0_8px_rgba(236,72,153,0.6)]">.000</span>
+                            </div>
+
+                            <ul class="text-left max-w-[280px] mx-auto mb-6 space-y-2.5 text-[11px] md:text-sm font-sans">
+                                <li class="flex items-center"><i class="ph-bold ph-check-circle text-accent1 text-lg mr-2.5 drop-shadow-[0_0_5px_rgba(0,229,255,0.5)]"></i> Lisensi APK Hak Milik Penuh</li>
+                                <li class="flex items-center"><i class="ph-bold ph-check-circle text-accent1 text-lg mr-2.5 drop-shadow-[0_0_5px_rgba(0,229,255,0.5)]"></i> Tanpa biaya langganan bulanan</li>
+                                <li class="flex items-center"><i class="ph-bold ph-check-circle text-accent1 text-lg mr-2.5 drop-shadow-[0_0_5px_rgba(0,229,255,0.5)]"></i> 100% Offline, privasi data aman</li>
+                                <li class="flex items-center"><i class="ph-bold ph-check-circle text-accent1 text-lg mr-2.5 drop-shadow-[0_0_5px_rgba(0,229,255,0.5)]"></i> Panduan instalasi awal lengkap</li>
+                            </ul>
+
+                            <a href="https://wa.me/6285173381900?text=Halo%20Mas%20Albert,%20saya%20ingin%20membeli%20Lisensi%20APK%20Alcashier.%20Boleh%20minta%20info%20pembayarannya?" class="btn-primary-custom w-full max-w-sm mx-auto font-space uppercase tracking-widest text-[10px] md:text-xs block py-3 md:py-3.5" target="_blank">
+                                Pesan Sekarang
+                            </a>
+                        </div>
+                    </div>
+                    <footer class="w-full text-center relative z-10 opacity-80 hover:opacity-100 transition-opacity pb-2 flex flex-col gap-1 fade-in">
+                        <div class="flex gap-3 w-full justify-center mb-3">
+                            <a href="https://instagram.com/albet_pf" target="_blank" class="w-8 h-8 shrink-0 rounded-full glass flex items-center justify-center text-sm hover:text-[var(--bg-main)] hover:bg-[#E1306C] transition-transform hover:scale-110 cursor-pointer"><i class="ph-fill ph-instagram-logo"></i></a>
+                            <a href="https://linkedin.com/in/albetpf" target="_blank" class="w-8 h-8 shrink-0 rounded-full glass flex items-center justify-center text-sm hover:text-[var(--bg-main)] hover:bg-[#0a66c2] transition-transform hover:scale-110 cursor-pointer"><i class="ph-fill ph-linkedin-logo"></i></a>
+                            <a href="https://github.com/albetpf" target="_blank" class="w-8 h-8 shrink-0 rounded-full glass flex items-center justify-center text-sm hover:text-[var(--bg-main)] hover:bg-[var(--text-main)] transition-transform hover:scale-110 cursor-pointer"><i class="ph-fill ph-github-logo"></i></a>
+                        </div>
+                        <h3 class="text-[var(--text-main)] text-[10px] md:text-xs font-black tracking-widest uppercase font-space transition-colors duration-500">
+                            Muhammad Albert Putra Firman, S.Kom.
+                        </h3>
+                        
+                        <p class="text-muted text-[8px] md:text-[10px] font-mono tracking-widest uppercase">
+                            &copy; 2026. All Rights Reserved.
+                        </p>
+                    </footer>
+
+                </div>
+            </div>
+        </section>
+    </main>
+    <div class="floating-nav md:hidden fixed bottom-5 left-1/2 -translate-x-1/2 z-[100] flex items-center gap-1 p-1.5 rounded-full bg-[rgba(3,3,5,0.85)] backdrop-blur-xl border border-[rgba(255,255,255,0.08)] shadow-[0_20px_40px_rgba(0,0,0,0.5)] w-max justify-around">
+        <button class="floating-item nav-trigger active-menu w-10 h-10 flex items-center justify-center rounded-full text-[#9ca3af] transition-all text-lg" data-target="hero"><i class="ph-fill ph-house"></i></button>
+        <button class="floating-item nav-trigger w-10 h-10 flex items-center justify-center rounded-full text-[#9ca3af] transition-all text-lg" data-target="galeri"><i class="ph-fill ph-image"></i></button>
+        <button class="floating-item nav-trigger w-10 h-10 flex items-center justify-center rounded-full text-[#9ca3af] transition-all text-lg" data-target="fitur"><i class="ph-fill ph-star"></i></button>
+        <button class="floating-item nav-trigger w-10 h-10 flex items-center justify-center rounded-full text-[#9ca3af] transition-all text-lg" data-target="harga"><i class="ph-fill ph-tag"></i></button>
+    </div>
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-lightbox">&times;</span>
+        <img id="lightbox-img" src="">
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
