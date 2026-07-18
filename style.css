@@ -35,10 +35,8 @@ body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background-c
 
 .slide {
     scroll-snap-align: start; 
-    scroll-snap-stop: normal; /* Ubah dari 'always' menjadi 'normal' */
-    height: 100dvh; 
-    width: 100vw; 
-    display: flex; flex-direction: column;
+    scroll-snap-stop: always;
+    height: 100dvh; width: 100vw; display: flex; flex-direction: column;
     justify-content: center; align-items: center; position: relative;
     perspective: 2000px;
 }
@@ -58,13 +56,13 @@ body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background-c
 
 .glass { 
     background: var(--glass-bg); 
-    backdrop-filter: blur(10px); /* Kurangi dari 25px menjadi 10px */
+    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px); 
     border: 1px solid var(--glass-border); 
     position: relative; 
     overflow: hidden;
     transition: border-color 0.4s, box-shadow 0.4s, background-color 0.4s; 
-    will-change: transform, opacity; /* Beritahu browser untuk menyiapkan memori GPU */
+    will-change: transform, opacity;
 }
 .glass::before {
     content: ''; position: absolute; inset: 0;
