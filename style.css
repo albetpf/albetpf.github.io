@@ -34,8 +34,7 @@ body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background-c
 #scroller::-webkit-scrollbar { display: none; }
 
 .slide {
-    scroll-snap-align: start; 
-    scroll-snap-stop: always;
+    scroll-snap-align: start; scroll-snap-stop: always;
     height: 100dvh; width: 100vw; display: flex; flex-direction: column;
     justify-content: center; align-items: center; position: relative;
     perspective: 2000px;
@@ -56,7 +55,7 @@ body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background-c
 
 .glass { 
     background: var(--glass-bg); 
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px); 
     -webkit-backdrop-filter: blur(10px); 
     border: 1px solid var(--glass-border); 
     position: relative; 
@@ -107,10 +106,39 @@ body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background-c
 
 #nav-indicator { box-shadow: 0 -2px 15px rgba(0,229,255,0.8), 0 0 5px rgba(139,92,246,0.8); }
 
-.floating-nav { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); z-index: 50; display: flex; align-items: center; gap: 0.3rem; padding: 0.4rem; border-radius: 9999px; background: rgba(3, 3, 5, 0.85); backdrop-filter: blur(25px); border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 20px 40px rgba(0,0,0,0.5); width: 95%; max-width: 420px; justify-content: space-around; }
+.floating-nav { 
+    position: fixed; 
+    bottom: 1.5rem; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    z-index: 50; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    padding: 0.4rem 0.6rem; 
+    border-radius: 9999px; 
+    background: rgba(3, 3, 5, 0.85); 
+    backdrop-filter: blur(25px); 
+    border: 1px solid rgba(255,255,255,0.08); 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5); 
+    width: 95%; 
+    max-width: 420px; 
+}
 .light-mode .floating-nav { background: rgba(255, 255, 255, 0.85); border: 1px solid rgba(0,0,0,0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
 
-.floating-item { width: 2.6rem; height: 2.6rem; flex-shrink: 0; display: flex; align-items: center; justify-content: center; border-radius: 50%; color: #9ca3af; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); position: relative; font-size: 1.25rem; }
+.floating-item { 
+    width: 2.2rem; 
+    height: 2.2rem; 
+    flex-shrink: 0; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    border-radius: 50%; 
+    color: #9ca3af; 
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); 
+    position: relative; 
+    font-size: 1.1rem; 
+}
 .light-mode .floating-item { color: #64748b; }
 
 .floating-item.active-menu { color: #000 !important; background: #fff !important; box-shadow: 0 0 20px rgba(255, 255, 255, 0.6); transform: scale(1.08); }
@@ -138,6 +166,7 @@ body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background-c
 .glass-box-3d { transform-style: preserve-3d; perspective: 1500px; }
 .glass-box-inner { transform: translateZ(40px); }
 
+/* Mematikan efek visual berat di layar HP/Tablet kecil agar scrolling lebih mulus */
 @media (max-width: 768px) {
     .noise-overlay, 
     .aurora-bg-1, 
