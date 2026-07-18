@@ -166,17 +166,21 @@ tailwind.config = {
 <section id="about" class="slide">
     <div class="slide-content w-full max-w-4xl lg:max-w-5xl">
         <div class="my-auto w-full flex flex-col items-center">
+            <!-- Judul dipindah ke luar kotak agar posisinya ke tengah seperti section lain -->
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-black mb-6 md:mb-10 text-center tracking-tighter font-space w-full"><span class="text-gradient drop-shadow-[0_0_15px_rgba(0,229,255,0.2)]">Tentang</span> Saya</h2>
+            
             <div class="glass rounded-[2.5rem] p-6 md:p-8 lg:p-10 relative group w-full border-[var(--glass-border)] shrink-0 glass-box-3d flex flex-col justify-center shadow-2xl transition-colors duration-500">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-10 items-center relative z-10 glass-box-inner">
                     <div>
-                        <h2 class="text-3xl md:text-4xl lg:text-5xl font-black mb-5 md:mb-8 inline-block tracking-tighter font-space"><span class="text-gradient drop-shadow-[0_0_15px_rgba(0,229,255,0.2)]">Tentang</span> Saya</h2>
-                        
                         <!-- Teks Tentang Saya Opsi 2 (Problem-Solving & Singkat) -->
                         <p class="text-muted text-xs md:text-sm lg:text-base leading-relaxed mb-4">
-                            Saya adalah seorang Full-Stack Developer & AI Enthusiast dengan sertifikasi Associate Data Scientist dari BNSP RI. Saya memiliki rekam jejak dalam merancang, membangun, dan mengoptimalkan sistem perangkat lunak yang cerdas.
+                            Saya adalah seorang Full-Stack Developer & AI Enthusiast (Lulusan Terbaik S1 Teknik Informatika, IPK 3.96) dengan sertifikasi resmi <span class="text-accent4 font-bold">Associate Data Scientist</span> dari BNSP RI. Saya memiliki rekam jejak dalam merancang, membangun, dan mengoptimalkan sistem perangkat lunak yang cerdas.
                         </p>
                         <p class="text-muted text-xs md:text-sm lg:text-base leading-relaxed mb-4">
-                            Keahlian saya terletak pada titik temu antara pengembangan perangkat lunak tradisional (Web & Mobile) dan integrasi kecerdasan buatan (Machine Learning, NLP, Computer Vision). Saya terbiasa menangani <em>full-lifecycle development</em>dari arsitektur <em>database</em>, <em>backend</em> API (Django/Node.js), antarmuka interaktif (ReactJS/Flutter), hingga implementasi model AI.
+                            Keahlian saya terletak pada titik temu antara pengembangan perangkat lunak tradisional (Web & Mobile) dan integrasi kecerdasan buatan (Machine Learning, NLP, Computer Vision). Saya terbiasa menangani <em>full-lifecycle development</em>—dari arsitektur <em>database</em>, <em>backend</em> API (Django/Node.js), antarmuka interaktif (ReactJS/Flutter), hingga implementasi model AI.
+                        </p>
+                        <p class="text-muted text-xs md:text-sm lg:text-base leading-relaxed mb-4">
+                            Dedikasi saya adalah menerjemahkan kebutuhan bisnis atau tantangan operasional ke dalam solusi teknologi yang efisien, otomatis, dan terukur.
                         </p>
                     </div>
                     <div class="grid grid-cols-2 gap-3 md:gap-4 lg:gap-6">
@@ -279,7 +283,9 @@ tailwind.config = {
 <section id="projects" class="slide">
     <div class="slide-content w-full max-w-4xl lg:max-w-6xl">
         <div class="my-auto w-full flex flex-col items-center">
-            <h2 class="text-2xl md:text-3xl lg:text-4xl font-black mb-4 md:mb-6 text-center md:text-left tracking-tighter font-space w-full"><span class="text-gradient drop-shadow-[0_0_15px_rgba(0,229,255,0.2)]">Proyek</span> & Pengembangan Sistem</h2>
+            <!-- Menghapus md:text-left dan menyamakan ukuran teks judul dengan section lain -->
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-black mb-6 md:mb-10 text-center tracking-tighter font-space w-full"><span class="text-gradient drop-shadow-[0_0_15px_rgba(0,229,255,0.2)]">Proyek</span> & Pengembangan Sistem</h2>
+            
             <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-5 w-full">
                 <div class="glass rounded-xl md:rounded-2xl p-4 md:p-5 bento-item group glass-hover lg:col-span-2 bg-[var(--bg-main)]/20 glass-box-3d shadow-md border-[var(--glass-border)] transition-colors duration-500" style="--accent: #00E5FF">
                     <i class="ph-fill ph-robot bento-icon-bg"></i>
