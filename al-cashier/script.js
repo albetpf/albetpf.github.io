@@ -81,3 +81,49 @@ function closeLightbox() {
 document.addEventListener('keydown', function(event) {
     if (event.key === "Escape") closeLightbox();
 });
+
+// --- AUTO SLIDE GALERI ---
+const galleryTrack = document.getElementById('gallery-track');
+const indicators = document.querySelectorAll('.indicator-btn');
+let currentSlide = 0;
+const totalSlides = 2; // Karena kita membagi 8 gambar menjadi 2 slide
+let slideInterval;
+
+function updateGallerySlide() {
+    if (!galleryTrack) return;
+    
+    // Geser track ke kiri (0% untuk slide 1, -100% untuk slide 2)
+    galleryTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+    
+    // Update tampilan titik indikator
+    indicators.forEach((ind, index) => {
+        if (index === currentSlide) {
+            // Indikator aktif (Panjang & Bewarna)
+            ind.className = 'indicator-btn w-4 h-1.5 md:w-6 md:h-2 rounded-full bg-accent1 transition-all duration-300';
+        } else {
+            // Indikator tidak aktif (Kecil & Redup)
+            ind.className = 'indicator-btn w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-white/20 hover:bg-white/50 transition-all duration-300 cursor-pointer';
+        }
+    });
+}
+
+function nextSlide() {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    updateGallerySlide();
+}
+
+// Menjalankan auto-slide setiap 3.5 detik (3500ms)
+if (galleryTrack) {
+    slideInterval = setInterval(nextSlide, 3500);
+    
+    // Opsional: Jika indikator diklik, pindah ke slide tersebut
+    indicators.forEach((ind, index) => {
+        ind.addEventListener('click', () => {
+            currentSlide = index;
+            updateGallerySlide();
+            // Reset timer otomatis agar tidak langsung ganti setelah diklik
+            clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, 3500);
+        });
+    });
+}
