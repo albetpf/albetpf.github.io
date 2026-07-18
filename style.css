@@ -34,8 +34,11 @@ body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background-c
 #scroller::-webkit-scrollbar { display: none; }
 
 .slide {
-    scroll-snap-align: start; scroll-snap-stop: always;
-    height: 100dvh; width: 100vw; display: flex; flex-direction: column;
+    scroll-snap-align: start; 
+    scroll-snap-stop: normal; /* Ubah dari 'always' menjadi 'normal' */
+    height: 100dvh; 
+    width: 100vw; 
+    display: flex; flex-direction: column;
     justify-content: center; align-items: center; position: relative;
     perspective: 2000px;
 }
@@ -54,9 +57,14 @@ body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background-c
 .slide-content::-webkit-scrollbar { display: none; }
 
 .glass { 
-    background: var(--glass-bg); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); 
-    border: 1px solid var(--glass-border); position: relative; overflow: hidden;
+    background: var(--glass-bg); 
+    backdrop-filter: blur(10px); /* Kurangi dari 25px menjadi 10px */
+    -webkit-backdrop-filter: blur(10px); 
+    border: 1px solid var(--glass-border); 
+    position: relative; 
+    overflow: hidden;
     transition: border-color 0.4s, box-shadow 0.4s, background-color 0.4s; 
+    will-change: transform, opacity; /* Beritahu browser untuk menyiapkan memori GPU */
 }
 .glass::before {
     content: ''; position: absolute; inset: 0;
@@ -131,3 +139,17 @@ body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background-c
 
 .glass-box-3d { transform-style: preserve-3d; perspective: 1500px; }
 .glass-box-inner { transform: translateZ(40px); }
+
+@media (max-width: 768px) {
+    .noise-overlay, 
+    .aurora-bg-1, 
+    .aurora-bg-2, 
+    .nebula-glow {
+        display: none !important;
+    }
+    
+    .glass {
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+    }
+}

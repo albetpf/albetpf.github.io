@@ -51,7 +51,7 @@ const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerH
 camera.position.set(0, 50, 150);
 const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true, powerPreference: "high-performance" });
 renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setPixelRatio(window.innerWidth < 768 ? 1 : Math.min(window.devicePixelRatio, 1.5));
 
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
 scene.add(ambientLight);
@@ -405,14 +405,20 @@ navTriggers.forEach(trigger => {
     });
 });
 
+let scrollTimeout;
 scroller.addEventListener('scroll', () => {
-    const st = scroller.scrollTop;
-    if (st > 50) {
-        topNav.classList.add('nav-shrink');
-    } else {
-        topNav.classList.remove('nav-shrink');
+    if (scrollTimeout) {
+        window.cancelAnimationFrame(scrollTimeout);
     }
-});
+    scrollTimeout = window.requestAnimationFrame(() => {
+        const st = scroller.scrollTop;
+        if (st > 50) {
+            topNav.classList.add('nav-shrink');
+        } else {
+            topNav.classList.remove('nav-shrink');
+        }
+    });
+}, { passive: true });
 
 function openModal(title, desc, techArray, iconClass, accentColor) {
     document.getElementById('modal-title').innerText = title;
