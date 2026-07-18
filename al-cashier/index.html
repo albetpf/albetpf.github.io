@@ -98,23 +98,21 @@
 
         <!-- FRAME 2: Galeri -->
         <section id="galeri" class="slide">
-            <div class="slide-content w-full max-w-[95%] md:max-w-5xl mx-auto">
+            <!-- Ubah max-w-5xl menjadi max-w-4xl agar formasi 2x2 tidak terlalu besar di Desktop -->
+            <div class="slide-content w-full max-w-[95%] md:max-w-4xl mx-auto">
                 <div class="my-auto w-full flex flex-col items-center">
                     <h2 class="text-2xl md:text-4xl font-black mb-2 text-center tracking-tighter font-space fade-in"><span class="text-gradient">Tampilan</span> Aplikasi</h2>
                     <p class="text-muted text-xs md:text-sm text-center mb-6 font-sans fade-in">Desain UI/UX Elegan & User Friendly.</p>
                     
                     <div class="w-full relative fade-in pb-16 md:pb-0"> 
-                        
-                        <!-- PERBAIKAN 1: Hilangkan padding di sini, tapi tambahkan pb-4 agar bayangan bawah kartu tidak terpotong -->
                         <div class="overflow-hidden w-full relative pb-4">
-                            
                             <!-- Track Slider -->
                             <div class="flex transition-transform duration-1000 ease-in-out w-full" id="gallery-track">
                                 
                                 <!-- SLIDE 1 -->
-                                <!-- PERBAIKAN 2: Tambahkan px-2 dan flex-none untuk memberi jarak aman antar slide (mencegah bocor) -->
                                 <div class="w-full shrink-0 flex-none px-2">
-                                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+                                    <!-- HAPUS md:grid-cols-4 agar formasi tetap 2x2 (2 atas, 2 bawah) di semua layar -->
+                                    <div class="grid grid-cols-2 gap-3 md:gap-5">
                                         <div class="new-gallery-card group" onclick="openLightbox('images/mockup-1.png')" style="--hover-color: #00E5FF;">
                                             <img src="images/mockup-1.png" alt="Tampilan Awal" onerror="this.src='https://via.placeholder.com/400x300/1E293B/00E5FF?text=Tampilan+Awal'">
                                             <div class="card-overlay"></div>
@@ -139,9 +137,9 @@
                                 </div>
 
                                 <!-- SLIDE 2 -->
-                                <!-- PERBAIKAN 2: Tambahkan px-2 dan flex-none -->
                                 <div class="w-full shrink-0 flex-none px-2">
-                                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+                                    <!-- HAPUS md:grid-cols-4 agar formasi tetap 2x2 (2 atas, 2 bawah) di semua layar -->
+                                    <div class="grid grid-cols-2 gap-3 md:gap-5">
                                         <div class="new-gallery-card group" onclick="openLightbox('images/mockup-5.png')" style="--hover-color: #10B981;">
                                             <img src="images/mockup-5.png" alt="Slip Transaksi" onerror="this.src='https://via.placeholder.com/400x300/1E293B/10B981?text=Slip+Transaksi'">
                                             <div class="card-overlay"></div>
