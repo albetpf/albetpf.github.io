@@ -1,111 +1,103 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- Theme Toggle Logic ---
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    const htmlElement = document.documentElement;
-    const iconSun = document.querySelector('.icon-sun');
-    const iconMoon = document.querySelector('.icon-moon');
-
-    const setTheme = (theme) => {
-        htmlElement.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
-        if (theme === 'dark') {
-            iconSun.style.display = 'none';
-            iconMoon.style.display = 'block';
-        } else {
-            iconSun.style.display = 'block';
-            iconMoon.style.display = 'none';
-        }
-    };
-
-    // Initialize Theme
-    const savedTheme = localStorage.getItem('theme');
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    if (savedTheme) {
-        setTheme(savedTheme);
-    } else if (systemPrefersDark) {
-        setTheme('dark');
-    }
-
-    themeToggleBtn.addEventListener('click', () => {
-        const currentTheme = htmlElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        setTheme(newTheme);
-    });
-
     // --- Mobile Menu Toggle ---
-    const menuToggleBtn = document.getElementById('menu-toggle');
+    const menuToggle = document.getElementById('menu-toggle');
     const navLinks = document.getElementById('nav-links');
-
-    menuToggleBtn.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
+    
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('mobile-active');
     });
 
-    // Close menu when a link is clicked
+    // Close menu on link click
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', () => {
-            if (window.innerWidth < 768) {
-                navLinks.classList.remove('active');
+            if (navLinks.classList.contains('mobile-active')) {
+                navLinks.classList.remove('mobile-active');
             }
         });
     });
 
-    // --- Scroll Reveal Animation ---
+    // --- Typing Effect ---
+    const typedTextSpan = document.getElementById("typed-text");
+    const textArray = ["AI & Machine Learning Engineer.", "Data Scientist.", "Full-Stack Developer."];
+    const typingDelay = 100;
+    const erasingDelay = 50;
+    const newTextDelay = 2000; // Delay between current and next text
+    let textArrayIndex = 0;
+    let charIndex = 0;
+
+    function type() {
+        if (charIndex < textArray[textArrayIndex].length) {
+            typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+            charIndex++;
+            setTimeout(type, typingDelay);
+        } else {
+            setTimeout(erase, newTextDelay);
+        }
+    }
+
+    function erase() {
+        if (charIndex > 0) {
+            typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
+            charIndex--;
+            setTimeout(erase, erasingDelay);
+        } else {
+            textArrayIndex++;
+            if (textArrayIndex >= textArray.length) textArrayIndex = 0;
+            setTimeout(type, typingDelay + 1100);
+        }
+    }
+
+    if (textArray.length) setTimeout(type, newTextDelay + 250);
+
+
+    // --- Intersection Observer for Scroll Reveal ---
     const revealElements = document.querySelectorAll('.reveal');
-    
-    const revealCallback = (entries, observer) => {
+    const revealOptions = {
+        threshold: 0.15,
+        rootMargin: "0px 0px -50px 0px"
+    };
+
+    const revealOnScroll = new IntersectionObserver(function(entries, observer) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
                 observer.unobserve(entry.target);
             }
         });
-    };
+    }, revealOptions);
 
-    const revealOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px"
-    };
-
-    const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
-    
     revealElements.forEach(el => {
-        revealObserver.observe(el);
+        revealOnScroll.observe(el);
     });
 
-    // --- Navbar Active State on Scroll ---
-    const sections = document.querySelectorAll('section[id]');
+    // --- Active Navigation Links based on Scroll ---
+    const sections = document.querySelectorAll('.section');
     const navItems = document.querySelectorAll('.nav-link');
 
-    const updateActiveLink = () => {
+    window.addEventListener('scroll', () => {
         let current = '';
-        const scrollY = window.scrollY;
-
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.clientHeight;
-            
-            if (scrollY >= (sectionTop - 150)) {
+            if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
                 current = section.getAttribute('id');
             }
         });
 
-        navItems.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('active');
+        navItems.forEach(item => {
+            item.classList.remove('active');
+            if (item.getAttribute('data-target') === current) {
+                item.classList.add('active');
             }
         });
-    };
-
-    window.addEventListener('scroll', updateActiveLink);
+    });
 
     // --- Back to Top Button ---
     const backToTopBtn = document.getElementById('back-to-top');
-
+    
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
+        if (window.scrollY > 500) {
             backToTopBtn.classList.add('visible');
         } else {
             backToTopBtn.classList.remove('visible');
@@ -119,21 +111,53 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Form Submission Prevention (Demo purpose) ---
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const btn = contactForm.querySelector('button[type="submit"]');
-            const originalText = btn.textContent;
-            btn.textContent = 'Message Sent!';
-            btn.style.backgroundColor = 'var(--accent-success)';
-            contactForm.reset();
-            
-            setTimeout(() => {
-                btn.textContent = originalText;
-                btn.style.backgroundColor = '';
-            }, 3000);
+    // --- Modal Logic ---
+    const modal = document.getElementById('project-modal');
+    const modalClose = document.getElementById('modal-close');
+    const modalTitle = document.getElementById('modal-title');
+    const modalDesc = document.getElementById('modal-desc');
+    const modalTech = document.getElementById('modal-tech');
+    const modalIconContainer = document.getElementById('modal-icon-container');
+
+    window.openProject = function(title, desc, techString, iconClass) {
+        modalTitle.textContent = title;
+        modalDesc.textContent = desc;
+        
+        // Setup Icon
+        modalIconContainer.innerHTML = `<i class="ph ${iconClass}"></i>`;
+        
+        // Setup Tech Tags
+        modalTech.innerHTML = '';
+        const techs = techString.split(', ');
+        techs.forEach(tech => {
+            const span = document.createElement('span');
+            span.className = 'tag';
+            span.textContent = tech;
+            modalTech.appendChild(span);
         });
-    }
+
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scroll
+    };
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    };
+
+    modalClose.addEventListener('click', closeModal);
+
+    // Close on outside click
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    // Close on ESC key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
 });
